@@ -1,4 +1,4 @@
-const getTodos = (callback) => {
+const getTodos = (resource, callback) => {
     const request = new XMLHttpRequest(); //Making an Http request
 
     request.addEventListener('readystatechange', () => {
@@ -13,15 +13,22 @@ const getTodos = (callback) => {
     });
 
     // request.open('GET', 'https://jsonplaceholder.typicode.com/todos/'); //We open the GET request
-    request.open('GET', 'todos.json'); //We open the GET request
+    request.open('GET', resource); //We open the GET request
     request.send(); //We send the request
 };
 
-getTodos((err, data) => {
-    console.log('Callback fired!');
-    if(err){
-        console.log(err);
-    } else {
+getTodos('todos/todos.json', (err, data) => {
+    // console.log('Callback fired!');
+    // if(err){
+    //     console.log(err);
+    // } else {
+    //     console.log(data);
+    // }
+    console.log(data);
+    getTodos('todos/todos2.json', (err, data) => {
         console.log(data);
-    }
+        getTodos('todos/todos3.json', (err, data) => {
+            console.log(data);
+        });
+    });
 });
