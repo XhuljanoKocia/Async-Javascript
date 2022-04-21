@@ -78,11 +78,27 @@
 // Fetch API
 
 // This is the new way to get data from an API and this returns a Promise, we can use the Promise methods on this
-fetch('todos/todos.json').then((response) => {
-    console.log('Resolved', response);
-    return response.json();
-}).then(data => {
-    console.log(data);
-}).catch((err) => {
-    console.log('Rejected', err);
-});
+// fetch('todos/todos.json').then((response) => {
+//     console.log('Resolved', response);
+//     return response.json();
+// }).then(data => {
+//     console.log(data);
+// }).catch((err) => {
+//     console.log('Rejected', err);
+// });
+
+// Async & Await
+
+// Whenever we call an Asynchronous function it returns a Promise
+const getTodos = async () => {
+    // The await keyword stalls Javascript assigning a value to the response variable until the promise(fetch) is resolved
+    const response = await fetch('todos/todos.json');
+    const data = await response.json();
+    return data;
+};
+
+// const test = getTodos(); //In this case test is a Promise
+// console.log(test);
+
+getTodos()
+    .then(data => console.log('Resolved:', data));
