@@ -93,6 +93,11 @@
 const getTodos = async () => {
     // The await keyword stalls Javascript assigning a value to the response variable until the promise(fetch) is resolved
     const response = await fetch('todos/todos.json');
+
+    if(response.status !== 200){
+        throw new Error('Can not fetch the data!');
+    }
+
     const data = await response.json();
     return data;
 };
@@ -101,4 +106,5 @@ const getTodos = async () => {
 // console.log(test);
 
 getTodos()
-    .then(data => console.log('Resolved:', data));
+    .then(data => console.log('Resolved:', data))
+    .catch(err => console.log('Rejected:', err.message));
