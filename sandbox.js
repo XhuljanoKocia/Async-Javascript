@@ -90,21 +90,36 @@
 // Async & Await
 
 // Whenever we call an Asynchronous function it returns a Promise
-const getTodos = async () => {
-    // The await keyword stalls Javascript assigning a value to the response variable until the promise(fetch) is resolved
-    const response = await fetch('todos/todos.json');
+// const getTodos = async () => {
+//     // The await keyword stalls Javascript assigning a value to the response variable until the promise(fetch) is resolved
+//     const response = await fetch('todos/todos.json');
 
-    if(response.status !== 200){
-        throw new Error('Can not fetch the data!');
-    }
+//     if(response.status !== 200){
+//         throw new Error('Can not fetch the data!');
+//     }
 
-    const data = await response.json();
-    return data;
-};
+//     const data = await response.json();
+//     return data;
+// };
 
-// const test = getTodos(); //In this case test is a Promise
-// console.log(test);
+// // const test = getTodos(); //In this case test is a Promise
+// // console.log(test);
 
-getTodos()
-    .then(data => console.log('Resolved:', data))
-    .catch(err => console.log('Rejected:', err.message));
+// getTodos()
+//     .then(data => console.log('Resolved:', data))
+//     .catch(err => console.log('Rejected:', err.message));
+
+// 2. Storing & Getting Data
+
+// Store data in local storage
+localStorage.setItem('name', 'Xhuljano');
+localStorage.setItem('age', 28);
+
+// Get data from local storage
+let name = localStorage.getItem('name');
+let age = localStorage.getItem('age');
+console.log(name, age);
+
+// Updating data
+localStorage.setItem('name', 'Leveling');
+localStorage.age = '40';
