@@ -130,14 +130,45 @@
 
 // 4. Stringifying & Parsing Data
 
-const todos = [
-    { "text": "play shoppingkart", "author": "test" },
-    { "text": "buy some bread", "author": "test1" },
-    { "text": "buy some water", "author": "test2" }
-];
+// const todos = [
+//     { "text": "play shoppingkart", "author": "test" },
+//     { "text": "buy some bread", "author": "test1" },
+//     { "text": "buy some water", "author": "test2" }
+// ];
 
-// console.log(JSON.stringify(todos));
-localStorage.setItem('todos', JSON.stringify(todos));
+// // console.log(JSON.stringify(todos));
+// localStorage.setItem('todos', JSON.stringify(todos));
 
-const stored = localStorage.getItem('todos');
-console.log(JSON.parse(stored));
+// const stored = localStorage.getItem('todos');
+// console.log(JSON.parse(stored));
+
+// 2. Object Literal Recap
+// const userOne = {
+//     username: 'Xhuljano',
+//     email: 'xhuljano@gmail.com',
+//     login(){
+//         console.log('The user logged in');
+//     },
+//     logout(){
+//         console.log('The user logged out');
+//     }
+// };
+
+// console.log(userOne.email, userOne.username);
+// userOne.login();
+
+// const userTow = {
+//     username: 'Test',
+//     email: 'test@gmail.com',
+//     login(){
+//         console.log('The user logged in');
+//     },
+//     logout(){
+//         console.log('The user logged out');
+//     }
+// };
+
+// console.log(userTow.email, userTow.username);
+// userTow.login();
+
+// const userThree = new User('example@gmail.com', 'Example');
