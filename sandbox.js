@@ -112,18 +112,32 @@
 // 2. Storing & Getting Data
 
 // Store data in local storage
-localStorage.setItem('name', 'Xhuljano');
-localStorage.setItem('age', 28);
+// localStorage.setItem('name', 'Xhuljano');
+// localStorage.setItem('age', 28);
 
-// Get data from local storage
-let name = localStorage.getItem('name');
-let age = localStorage.getItem('age');
-console.log(name, age);
+// // Get data from local storage
+// let name = localStorage.getItem('name');
+// let age = localStorage.getItem('age');
+// console.log(name, age);
 
-// Updating data
-localStorage.setItem('name', 'Leveling');
-localStorage.age = '40';
+// // Updating data
+// localStorage.setItem('name', 'Leveling');
+// localStorage.age = '40';
 
-// 3. Deleting Storage Data
-// localStorage.removeItem('name');
-localStorage.clear(); // Removes all the items from local storage
+// // 3. Deleting Storage Data
+// // localStorage.removeItem('name');
+// localStorage.clear(); // Removes all the items from local storage
+
+// 4. Stringifying & Parsing Data
+
+const todos = [
+    { "text": "play shoppingkart", "author": "test" },
+    { "text": "buy some bread", "author": "test1" },
+    { "text": "buy some water", "author": "test2" }
+];
+
+// console.log(JSON.stringify(todos));
+localStorage.setItem('todos', JSON.stringify(todos));
+
+const stored = localStorage.getItem('todos');
+console.log(JSON.parse(stored));
