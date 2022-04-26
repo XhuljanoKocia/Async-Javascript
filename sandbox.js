@@ -123,3 +123,7 @@ console.log(name, age);
 // Updating data
 localStorage.setItem('name', 'Leveling');
 localStorage.age = '40';
+
+// 3. Deleting Storage Data
+// localStorage.removeItem('name');
+localStorage.clear(); // Removes all the items from local storage
