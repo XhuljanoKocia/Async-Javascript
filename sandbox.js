@@ -174,73 +174,104 @@
 // const userThree = new User('example@gmail.com', 'Example');
 
 // 4. Class Constructors
-class User{
-    constructor(username, email){
-        this.username = username;
-        this.email = email;
-        this.score = 0;
-    }
-    login(){
-        console.log(`${this.username} just logged in`);
-        return this;
-    }
-    logout(){
-        console.log(`${this.username} just logged out`);
-        return this;
-    }
-    incScore(){
-        this.score += 1;
-        console.log(`${this.username} has a score of ${this.score}`);
-        return this;
-    }
-}
+// class User{
+//     constructor(username, email){
+//         this.username = username;
+//         this.email = email;
+//         this.score = 0;
+//     }
+//     login(){
+//         console.log(`${this.username} just logged in`);
+//         return this;
+//     }
+//     logout(){
+//         console.log(`${this.username} just logged out`);
+//         return this;
+//     }
+//     incScore(){
+//         this.score += 1;
+//         console.log(`${this.username} has a score of ${this.score}`);
+//         return this;
+//     }
+// }
 
-const userOne = new User('Test2', 'test2@gmail.com');
-const userTwo = new User('Test3', 'test3@yahoo.com');
+// const userOne = new User('Test2', 'test2@gmail.com');
+// const userTwo = new User('Test3', 'test3@yahoo.com');
 
-console.log(userOne, userTwo);
+// console.log(userOne, userTwo);
 
-// the 'new' keyword
-// 1- it creates a new empty object {}
-// 2- it binds the value of 'this' to the new empty object
-// 3- it calls the constructor function to 'build' the object
+// // the 'new' keyword
+// // 1- it creates a new empty object {}
+// // 2- it binds the value of 'this' to the new empty object
+// // 3- it calls the constructor function to 'build' the object
 
-// 5. Class Methods & Method Chaining
-userOne.login();
-userTwo.login();
-userOne.logout();
-userTwo.logout();
-userOne.incScore();
+// // 5. Class Methods & Method Chaining
+// userOne.login();
+// userTwo.login();
+// userOne.logout();
+// userTwo.logout();
+// userOne.incScore();
 
-// Returning this in the methods on the class we can chain methods together since they don't return undefined anymore
-userTwo.incScore().incScore().incScore();
+// // Returning this in the methods on the class we can chain methods together since they don't return undefined anymore
+// userTwo.incScore().incScore().incScore();
 
-// 6. Class Inheritance (subclasses)
-class Admin extends User{
-    // If we want to define extra properties for another class we have to use contructor again since only there you can define properties
-    constructor(username, email, title){
-        // When we use super it looks for the parent class which is User in our case and runs its contructor first
-        super(username, email);
-        this.title = title;
-    }
-    deleteUser(user){
-        users = users.filter((u) => {
-            return u.username !== user.username;
-        });
-    }
-}
+// // 6. Class Inheritance (subclasses)
+// class Admin extends User{
+//     // If we want to define extra properties for another class we have to use contructor again since only there you can define properties
+//     constructor(username, email, title){
+//         // When we use super it looks for the parent class which is User in our case and runs its contructor first
+//         super(username, email);
+//         this.title = title;
+//     }
+//     deleteUser(user){
+//         users = users.filter((u) => {
+//             return u.username !== user.username;
+//         });
+//     }
+// }
 
-const userThree = new Admin('Test4', 'test4@gmail.com', 'some title');
-let users = [userOne, userTwo, userThree];
+// const userThree = new Admin('Test4', 'test4@gmail.com', 'some title');
+// let users = [userOne, userTwo, userThree];
 
-console.log(users);
+// console.log(users);
 
-userThree.deleteUser(userTwo);
-console.log(users);
+// userThree.deleteUser(userTwo);
+// console.log(users);
 
 // 9. Prototype Model
+function User(username, email){
+    this.username = username;
+    this.email = email;
+}
 
 // This way we add new methods to the prototype. They can be used by all other users we create without needing to create the methods again
 User.prototype.login = function(){
     console.log(`${this.username} just logged in`);
+    return this; // If we want to use method chaining
 }
+
+User.prototype.logout = function(){
+    console.log(`${this.username} just logged out`);
+    return this;
+}
+
+function Admin(username, email, title){
+    // The this keyword as the first parameter referes to the userThree created from the Admin
+    // The .call method is used to inherit all the parameters from the User object
+    User.call(this, username, email);
+    this.title = title;
+}
+
+// We copy the user prototype into the Admin prototype
+Admin.prototype = Object.create(User.prototype);
+
+Admin.prototype.deleteUser = function(){
+    console.log('Delete a user');
+}
+
+const userOne = new User('Test2', 'test2@gmail.com');
+const userTwo = new User('Test3', 'test3@yahoo.com');
+const userThree = new Admin('Test4', 'test4@gmail.com', 'some title');
+
+console.log(userOne, userTwo, userThree);
+userOne.login().logout();
