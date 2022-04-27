@@ -178,6 +178,20 @@ class User{
     constructor(username, email){
         this.username = username;
         this.email = email;
+        this.score = 0;
+    }
+    login(){
+        console.log(`${this.username} just logged in`);
+        return this;
+    }
+    logout(){
+        console.log(`${this.username} just logged out`);
+        return this;
+    }
+    incScore(){
+        this.score += 1;
+        console.log(`${this.username} has a score of ${this.score}`);
+        return this;
     }
 }
 
@@ -190,3 +204,13 @@ console.log(userOne, userTwo);
 // 1- it creates a new empty object {}
 // 2- it binds the value of 'this' to the new empty object
 // 3- it calls the constructor function to 'build' the object
+
+// 5. Class Methods & Method Chaining
+userOne.login();
+userTwo.login();
+userOne.logout();
+userTwo.logout();
+userOne.incScore();
+
+// Returning this in the methods on the class we can chain methods together since they don't return undefined anymore
+userTwo.incScore().incScore().incScore();
