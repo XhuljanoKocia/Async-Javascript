@@ -172,3 +172,21 @@
 // userTow.login();
 
 // const userThree = new User('example@gmail.com', 'Example');
+
+// 4. Class Constructors
+class User{
+    constructor(username, email){
+        this.username = username;
+        this.email = email;
+    }
+}
+
+const userOne = new User('Test2', 'test2@gmail.com');
+const userTwo = new User('Test3', 'test3@yahoo.com');
+
+console.log(userOne, userTwo);
+
+// the 'new' keyword
+// 1- it creates a new empty object {}
+// 2- it binds the value of 'this' to the new empty object
+// 3- it calls the constructor function to 'build' the object
