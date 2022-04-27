@@ -237,3 +237,10 @@ console.log(users);
 
 userThree.deleteUser(userTwo);
 console.log(users);
+
+// 9. Prototype Model
+
+// This way we add new methods to the prototype. They can be used by all other users we create without needing to create the methods again
+User.prototype.login = function(){
+    console.log(`${this.username} just logged in`);
+}
