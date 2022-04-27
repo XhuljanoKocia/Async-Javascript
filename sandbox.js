@@ -217,6 +217,12 @@ userTwo.incScore().incScore().incScore();
 
 // 6. Class Inheritance (subclasses)
 class Admin extends User{
+    // If we want to define extra properties for another class we have to use contructor again since only there you can define properties
+    constructor(username, email, title){
+        // When we use super it looks for the parent class which is User in our case and runs its contructor first
+        super(username, email);
+        this.title = title;
+    }
     deleteUser(user){
         users = users.filter((u) => {
             return u.username !== user.username;
@@ -224,7 +230,7 @@ class Admin extends User{
     }
 }
 
-const userThree = new Admin('Test4', 'test4@gmail.com');
+const userThree = new Admin('Test4', 'test4@gmail.com', 'some title');
 let users = [userOne, userTwo, userThree];
 
 console.log(users);
