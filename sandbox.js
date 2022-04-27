@@ -214,3 +214,20 @@ userOne.incScore();
 
 // Returning this in the methods on the class we can chain methods together since they don't return undefined anymore
 userTwo.incScore().incScore().incScore();
+
+// 6. Class Inheritance (subclasses)
+class Admin extends User{
+    deleteUser(user){
+        users = users.filter((u) => {
+            return u.username !== user.username;
+        });
+    }
+}
+
+const userThree = new Admin('Test4', 'test4@gmail.com');
+let users = [userOne, userTwo, userThree];
+
+console.log(users);
+
+userThree.deleteUser(userTwo);
+console.log(users);
