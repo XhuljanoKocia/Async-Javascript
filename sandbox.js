@@ -239,39 +239,39 @@
 // console.log(users);
 
 // 9. Prototype Model
-function User(username, email){
-    this.username = username;
-    this.email = email;
-}
+// function User(username, email){
+//     this.username = username;
+//     this.email = email;
+// }
 
-// This way we add new methods to the prototype. They can be used by all other users we create without needing to create the methods again
-User.prototype.login = function(){
-    console.log(`${this.username} just logged in`);
-    return this; // If we want to use method chaining
-}
+// // This way we add new methods to the prototype. They can be used by all other users we create without needing to create the methods again
+// User.prototype.login = function(){
+//     console.log(`${this.username} just logged in`);
+//     return this; // If we want to use method chaining
+// }
 
-User.prototype.logout = function(){
-    console.log(`${this.username} just logged out`);
-    return this;
-}
+// User.prototype.logout = function(){
+//     console.log(`${this.username} just logged out`);
+//     return this;
+// }
 
-function Admin(username, email, title){
-    // The this keyword as the first parameter referes to the userThree created from the Admin
-    // The .call method is used to inherit all the parameters from the User object
-    User.call(this, username, email);
-    this.title = title;
-}
+// function Admin(username, email, title){
+//     // The this keyword as the first parameter referes to the userThree created from the Admin
+//     // The .call method is used to inherit all the parameters from the User object
+//     User.call(this, username, email);
+//     this.title = title;
+// }
 
-// We copy the user prototype into the Admin prototype
-Admin.prototype = Object.create(User.prototype);
+// // We copy the user prototype into the Admin prototype
+// Admin.prototype = Object.create(User.prototype);
 
-Admin.prototype.deleteUser = function(){
-    console.log('Delete a user');
-}
+// Admin.prototype.deleteUser = function(){
+//     console.log('Delete a user');
+// }
 
-const userOne = new User('Test2', 'test2@gmail.com');
-const userTwo = new User('Test3', 'test3@yahoo.com');
-const userThree = new Admin('Test4', 'test4@gmail.com', 'some title');
+// const userOne = new User('Test2', 'test2@gmail.com');
+// const userTwo = new User('Test3', 'test3@yahoo.com');
+// const userThree = new Admin('Test4', 'test4@gmail.com', 'some title');
 
-console.log(userOne, userTwo, userThree);
-userOne.login().logout();
+// console.log(userOne, userTwo, userThree);
+// userOne.login().logout();
